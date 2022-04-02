@@ -45,7 +45,7 @@ def deserialisasi(s):
     return json.loads(s)
     
 
-def send_command(command_str,is_secure=True):
+def send_command(command_str,is_secure=False):
     alamat_server = server_address[0]
     port_server = server_address[1]
 #    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -82,12 +82,12 @@ def send_command(command_str,is_secure=True):
         return False
 
     
-def getdatapemain(nomor=0,is_secure=True):
+def getdatapemain(nomor=0,is_secure=False):
     cmd=f"getdatapemain {nomor}\r\n\r\n"
     hasil = send_command(cmd,is_secure=is_secure)
     return hasil
 
-def lihatversi(is_secure=True):
+def lihatversi(is_secure=False):
     cmd=f"versi \r\n\r\n"
     hasil = send_command(cmd,is_secure=is_secure)
     return hasil
@@ -114,7 +114,7 @@ def getdatapemain_multithread(total_request, table_data):
     table_data.append([total_request, total_request, total_response, selesai])
 
 if __name__=='__main__':
-    h = lihatversi(is_secure=True)
+    h = lihatversi(is_secure=False)
     if (h):
         print(h)
     total_request = [1, 5, 10, 20]

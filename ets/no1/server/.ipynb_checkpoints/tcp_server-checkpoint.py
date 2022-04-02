@@ -94,7 +94,7 @@ def handlerequest(client_address, connection):
            logging.warning(f"no more data from {client_address}")
            break
 
-def run_server(server_address,is_secure=True):
+def run_server(server_address,is_secure=False):
     # ------------------------------ SECURE SOCKET INITIALIZATION ----
     if is_secure == True:
         print(os.getcwd())
@@ -141,7 +141,7 @@ def run_server(server_address,is_secure=True):
 
 if __name__=='__main__':
     try:
-        run_server(('0.0.0.0', 12000),is_secure=True)
+        run_server(('0.0.0.0', 12000),is_secure=False)
     except KeyboardInterrupt:
         logging.warning("Control-C: Program berhenti")
         exit(0)
