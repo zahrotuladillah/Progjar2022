@@ -131,9 +131,7 @@ def run_server(server_address,is_secure=False):
             else:
                 connection = koneksi
 
-            threads[thread_index] = threading.Thread(target=handlerequest, args=(client_address, connection))
-            threads[thread_index].start()
-            thread_index += 1
+            handlerequest(client_address, connection)
                 
             # Clean up the connection
         except ssl.SSLError as error_ssl:
